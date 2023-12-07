@@ -82,7 +82,7 @@ def draw(image, box_data, CLASSES):
         # print('box coordinate left,top,right,down: [{}, {}, {}, {}]'.format(top, left, right, bottom))
 
         cv2.rectangle(image, (top, left), (right, bottom), (255, 0, 0), 2)
-        cv2.putText(image, f'{0} {1:.2f}'.format(CLASSES[cl], score),
+        cv2.putText(image, '{0} {1:.2f}'.format(CLASSES[cl], score),
                     (top, left),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     0.6, (0, 0, 255), 2)
@@ -99,7 +99,7 @@ def draw_detect(image, box_data, CLASSES):
         # print('box coordinate left,top,right,down: [{}, {}, {}, {}]'.format(top, left, right, bottom))
 
         cv2.rectangle(image, (top, left), (right, bottom), (255, 0, 0), 2)
-        cv2.putText(image, f'{0} {1:.2f}'.format(CLASSES[cl], score),
+        cv2.putText(image, '{0} {1:.2f}'.format(CLASSES[cl], score),
                     (top, left),
                     cv2.FONT_HERSHEY_SIMPLEX,
                     0.6, (0, 0, 255), 2)

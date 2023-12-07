@@ -83,13 +83,13 @@ if __name__ == "__main__":
 
     # 加载数据
     CLASSES = ['face', 'eye', 'mouth']
-    image_path = "data/images/Far_person.jpg"
+    image_path = "data/images/Nearby_person.jpg"
     image = cv2.imread(image_path)
     image = cv2.resize(image, (640, 640))
     Input = images_numpy_to_tensor(image_path)
 
     # 加载模型
-    onnx_model_path = "weights/yolov5n_face_batch_1.onnx"
+    onnx_model_path = "weights/best_batch_1.onnx"
     yolov5 = Yolov5ONNX(onnx_model_path)
 
     # 模型推理

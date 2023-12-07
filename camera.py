@@ -81,7 +81,7 @@ if __name__ == "__main__":
     CLASSES = ['face', 'eye', 'mouth']
 
     # 加载模型
-    onnx_model_path = "weights/yolov5n_face_batch_1.onnx"
+    onnx_model_path = "weights/best_batch_1.onnx"
     yolov5 = Yolov5ONNX(onnx_model_path)
 
     # 打开摄像头

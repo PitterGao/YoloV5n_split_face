@@ -93,7 +93,7 @@ if __name__ == '__main__':
     image_list = read_images_from_folder(folder_path)
     images = np.stack(image_list, axis=0)
 
-    onnx_model_path = "weights/yolov5n_face_batch_2.onnx"
+    onnx_model_path = "weights/best_batch_5.onnx"
     yolo = YOLODetector(classes=CLASSES, o_device=device, onnx_path=onnx_model_path)
 
     face, eye, mouth = yolo.Segmentation_of_target_objects(images)
