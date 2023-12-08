@@ -21,7 +21,7 @@ class YOLODetector(object):
         model = Yolov5ONNX(self.onnx_path)
         return model
 
-    def Segmentation_of_target_objects(self, batch_images, show=True):
+    def Segmentation_of_target_objects(self, batch_images, is_show=True):
         eye_tensor = torch.empty(0).to(self.device)
         face_tensor = torch.empty(0).to(self.device)
         mouth_tensor = torch.empty(0).to(self.device)
@@ -32,17 +32,18 @@ class YOLODetector(object):
         bs, chl = batch_images.shape[0], batch_images.shape[1]
 
         for k, outbox in enumerate(outboxes):
-            img = draw_detect(batch_images[k], outbox, self.classes)
-            cv2.imshow("检测效果图", img)
-            cv2.waitKey(0)
+            if is_show:
+                img = draw_detect(batch_images[k], outbox, self.classes)
+                cv2.imshow("检测效果图", img)
+                cv2.waitKey(100)
 
             check_set = torch.unique(outbox[:, 5])
             if len(outbox) == 0 or len(check_set) != 3:
-                if show:
+                if is_show:
                     draw_detect(batch_images[k], outbox, self.classes)
                     cv2.imshow("检测效果图", img)
                     cv2.waitKey(0)
-                    print('[ERROR]Detect: Pred{len(pred)}, Object:{len(check_set)}')
+                    print(f'[ERROR]Detect: Pred{len(pres)}, Object:{len(check_set)}')
                     exit(0)
                     # TODO: 提醒操作者脸部存在遮挡
                 else:
